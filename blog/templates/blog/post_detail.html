@@ -25,14 +25,25 @@
 
   <section>
     <h3>Comments</h3>
-    {% for comment in post.comments.all %}
-      {% if comment.approved %}
-        <p><strong>{{ comment.name }}</strong> said:</p>
-        <p>{{ comment.body }}</p>
-        <hr>
-      {% endif %}
+  
+    {% for comment in comments %}
+      <p><strong>{{ comment.name }}</strong> says:</p>
+      <p>{{ comment.body }}</p>
+      <hr>
     {% empty %}
-      <p>No comments yet.</p>
+      <p>No comments yet. Be the first to comment!</p>
     {% endfor %}
+  
+    <h4>Leave a comment</h4>
+  
+    {% if new_comment %}
+      <p>Thank you for your comment! It will appear once approved.</p>
+    {% else %}
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Post Comment</button>
+      </form>
+    {% endif %}
   </section>
 {% endblock %}
