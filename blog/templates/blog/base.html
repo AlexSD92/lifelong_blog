@@ -84,9 +84,21 @@
     <h1><a href="/">My Minimal Blog</a></h1>
     <nav>
       <a href="/">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      {% if user.is_authenticated %}
+        <span>Welcome, {{ user.username }}</span>
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" style="background:none;border:none;padding:0;color:#007acc;cursor:pointer;">
+            Logout
+          </button>
+        </form>
+        
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+      {% endif %}
     </nav>
+    
   </header>
 
   {% block content %}{% endblock %}

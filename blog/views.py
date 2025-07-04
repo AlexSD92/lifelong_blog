@@ -4,6 +4,9 @@ from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
+from django.contrib.auth import login
+from django.shortcuts import redirect
+from .forms import RegisterForm
 
 def home(request):
     posts = Post.objects.filter(published=True).order_by('-created')
@@ -43,3 +46,16 @@ def post_detail(request, slug):
         'form': form,
         'new_comment': new_comment
     })
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # ✅ auto-login
+            return redirect('home')  # redirect after successful registration
+    else:
+        form = RegisterForm()
+    
+    return render(request, 'blog/register.html', {'form': form})
+
