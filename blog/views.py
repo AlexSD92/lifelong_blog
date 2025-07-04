@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Category
 from .forms import CommentForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
 
 def home(request):
     posts = Post.objects.filter(published=True).order_by('-created')
@@ -21,14 +24,18 @@ def post_detail(request, slug):
     comments = post.comments.filter(approved=True)
     new_comment = None
 
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            new_comment = form.save(commit=False)
-            new_comment.post = post
-            new_comment.save()  # approved=False by default
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                new_comment = form.save(commit=False)
+                new_comment.user = request.user
+                new_comment.post = post
+                new_comment.save()
+        else:
+            form = CommentForm()
     else:
-        form = CommentForm()
+        form = None
 
     return render(request, 'blog/post_detail.html', {
         'post': post,
