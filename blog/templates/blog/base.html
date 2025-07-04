@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}My Minimal Blog{% endblock %}</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      max-width: 70ch;
+      margin: auto;
+      font-size: 1.25em;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    * {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      padding: 1em;
+      font-family: system-ui, sans-serif;
+      background-color: #fafafa;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      margin-bottom: 1em;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007acc;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 1em 0;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    nav {
+      margin-bottom: 2em;
+    }
+
+    nav a {
+      margin-right: 1em;
+    }
+
+    .adsense {
+      margin: 2em 0;
+      text-align: center;
+    }
+
+    .post-preview {
+      margin-bottom: 2em;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1em;
+    }
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <header>
+    <h1><a href="/">My Minimal Blog</a></h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    <p>&copy; {{ now|date:"Y" }} My Minimal Blog. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

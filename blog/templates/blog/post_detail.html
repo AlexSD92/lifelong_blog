@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ post.title }} - My Minimal Blog{% endblock %}
+
+{% block content %}
+  <article>
+    <h2>{{ post.title }}</h2>
+    <p><small>By {{ post.author }} • {{ post.created|date:"F j, Y" }}</small></p>
+    {% if post.image %}
+      <img src="{{ post.image.url }}" alt="Image for {{ post.title }}">
+    {% endif %}
+    <div>
+      {{ post.body|linebreaks }}
+    </div>
+  </article>
+
+  <div class="adsense">
+    <!-- Google AdSense placeholder -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXX"
+         data-ad-slot="XXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+  <section>
+    <h3>Comments</h3>
+    {% for comment in post.comments.all %}
+      {% if comment.approved %}
+        <p><strong>{{ comment.name }}</strong> said:</p>
+        <p>{{ comment.body }}</p>
+        <hr>
+      {% endif %}
+    {% empty %}
+      <p>No comments yet.</p>
+    {% endfor %}
+  </section>
+{% endblock %}
