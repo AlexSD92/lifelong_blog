@@ -1,7 +1,8 @@
 from django import forms
-from .models import Comment
+from .models import Comment, Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib import admin
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -22,7 +23,7 @@ class RegisterForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'body', 'image', ...]  # include 'image'
+        fields = ['title', 'slug', 'category', 'image', 'body', 'published']
 
 # Or in admin:
 class PostAdmin(admin.ModelAdmin):
