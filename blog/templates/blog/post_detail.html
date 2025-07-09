@@ -9,7 +9,7 @@
       <img src="{{ post.image.url }}" alt="Image for {{ post.title }}">
     {% endif %}
     <div>
-      {{ post.body|linebreaks }}
+      {{ post.body|safe }}
     </div>
   </article>
 
