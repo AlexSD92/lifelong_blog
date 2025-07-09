@@ -1,5 +1,9 @@
 {% extends 'blog/base.html' %}
-{% block title %}Home - My Minimal Blog{% endblock %}
+{% block title %}Lifelong Blog – Explore Posts on Code, Health & Growth{% endblock %}
+{% block meta_description %}Welcome to Lifelong Blog – discover practical guides on software, fitness, and lifestyle.{% endblock %}
+{% block og_title %}Lifelong Blog{% endblock %}
+{% block og_description %}Learn something new with every post – from code to cardio.{% endblock %}
+{% block og_image %}/static/images/default.jpg{% endblock %}
 
 {% block content %}
   {% for post in page_obj %}
