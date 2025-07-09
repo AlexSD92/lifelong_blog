@@ -18,3 +18,13 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'wants_newsletter']
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'body', 'image', ...]  # include 'image'
+
+# Or in admin:
+class PostAdmin(admin.ModelAdmin):
+    fields = ('title', 'body', 'image', ...)
+

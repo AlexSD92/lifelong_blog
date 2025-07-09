@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from ckeditor.fields import RichTextField
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -30,7 +31,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='post_images/', blank=True, null=True)
-    body = models.TextField()
+    body = RichTextField()
     published = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
 
