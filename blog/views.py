@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Category
+from .models import Post, Category, Tag
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -50,6 +50,11 @@ def post_detail(request, slug):
         'form': form,
         'new_comment': new_comment
     })
+
+def tagged_posts(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    posts = Post.objects.filter(tags=tag, published=True).order_by('-created')
+    return render(request, 'blog/tagged_posts.html', {'tag': tag, 'posts': posts})
 
 def register(request):
     if request.method == 'POST':

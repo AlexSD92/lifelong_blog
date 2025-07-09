@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block title %}Posts tagged "{{ tag.name }}"{% endblock %}
+
+{% block content %}
+  <h2>Posts tagged "{{ tag.name }}"</h2>
+  {% for post in posts %}
+    <div class="post-preview">
+      <h2><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
+      <p><small>By {{ post.author }} • {{ post.created|date:"F j, Y" }}</small></p>
+      <p>{{ post.body|truncatewords:30 }}</p>
+      <p><a href="{% url 'post_detail' slug=post.slug %}">Read more →</a></p>
+    </div>
+  {% empty %}
+    <p>No posts tagged with "{{ tag.name }}" yet.</p>
+  {% endfor %}
+{% endblock %}
