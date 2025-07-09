@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib import messages
 from django.core.paginator import Paginator
-
 from .models import Post, Category, Tag
 from .forms import CommentForm, RegisterForm
+
 
 def home(request):
     posts = Post.objects.filter(published=True).order_by('-created')
