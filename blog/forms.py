@@ -9,6 +9,12 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 class RegisterForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    wants_newsletter = forms.BooleanField(
+        required=False,
+        label="I'd like to receive email updates and newsletters."
+    )
+
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2', 'wants_newsletter']

@@ -53,12 +53,15 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # ✅ auto-login
-            return redirect('home')  # redirect after successful registration
+            # Save newsletter preference to Profile
+            user.profile.wants_newsletter = form.cleaned_data['wants_newsletter']
+            user.profile.save()
+            login(request, user)
+            return redirect('home')
     else:
         form = RegisterForm()
-    
     return render(request, 'blog/register.html', {'form': form})
+
 
 @login_required
 def delete_account(request):
