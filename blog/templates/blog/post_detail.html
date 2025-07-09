@@ -27,7 +27,7 @@
     <h3>Comments</h3>
   
     {% for comment in comments %}
-      <p><strong>{{ comment.user.username }}</strong> says:</p>
+    <p><strong>{{ comment.display_name }}</strong> says:</p>
       <p>{{ comment.body }}</p>
       <hr>
     {% empty %}

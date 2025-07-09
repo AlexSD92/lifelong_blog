@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% block title %}Delete Account{% endblock %}
+{% block content %}
+  <h2>Delete Account</h2>
+  <p>This action is permanent. Your comments will remain visible but marked as [anonymous].</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete my account</button>
+    <a href="{% url 'home' %}">Cancel</a>
+  </form>
+{% endblock %}

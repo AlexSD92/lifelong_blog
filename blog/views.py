@@ -4,9 +4,10 @@ from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.shortcuts import redirect, render
 from .forms import RegisterForm
+from django.contrib import messages
 
 def home(request):
     posts = Post.objects.filter(published=True).order_by('-created')
@@ -58,6 +59,16 @@ def register(request):
         form = RegisterForm()
     
     return render(request, 'blog/register.html', {'form': form})
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        logout(request)
+        user.delete()
+        messages.success(request, "Your account has been deleted.")
+        return redirect('account_deleted')
+    return render(request, 'blog/delete_account.html')
 
 def terms_view(request):
     return render(request, 'blog/terms.html')
