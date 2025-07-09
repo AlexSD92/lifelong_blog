@@ -105,6 +105,10 @@
 
   <footer>
     <p>&copy; {{ now|date:"Y" }} My Minimal Blog. All rights reserved.</p>
+    <p>
+      <a href="{% url 'terms' %}">Terms of Service</a> | 
+      <a href="{% url 'privacy' %}">Privacy Policy</a>
+    </p>
   </footer>
 
 </body>
