@@ -8,10 +8,14 @@ from django.contrib.auth import login, logout
 from django.shortcuts import redirect, render
 from .forms import RegisterForm
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 def home(request):
     posts = Post.objects.filter(published=True).order_by('-created')
-    return render(request, 'blog/home.html', {'posts': posts})
+    paginator = Paginator(posts, 5)  # Show 5 posts per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'blog/home.html', {'page_obj': page_obj})
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, published=True)
@@ -21,7 +25,6 @@ def category_posts(request, slug):
     category = get_object_or_404(Category, slug=slug)
     posts = Post.objects.filter(category=category, published=True)
     return render(request, 'blog/category.html', {'category': category, 'posts': posts})
-
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, published=True)
