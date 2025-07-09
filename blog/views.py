@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib.auth import login
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from .forms import RegisterForm
 
 def home(request):
@@ -58,4 +58,11 @@ def register(request):
         form = RegisterForm()
     
     return render(request, 'blog/register.html', {'form': form})
+
+def terms_view(request):
+    return render(request, 'blog/terms.html')
+
+def privacy_view(request):
+    return render(request, 'blog/privacy.html')
+
 
