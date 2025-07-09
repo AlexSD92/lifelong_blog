@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+{% block title %}Account Deleted{% endblock %}
+{% block content %}
+  <h2>Your account has been deleted</h2>
+  <p>We're sorry to see you go. Your comments will remain visible under "[anonymous]".</p>
+  <a href="{% url 'home' %}">Return to Home</a>
+{% endblock %}
