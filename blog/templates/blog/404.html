@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+{% block title %}Page Not Found{% endblock %}
+{% block content %}
+  <h1>404 – Page Not Found</h1>
+  <p>Sorry, we couldn’t find what you were looking for.</p>
+  <a href="{% url 'home' %}">Back to homepage</a>
+{% endblock %}
