@@ -128,6 +128,12 @@
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'register' %}">Register</a>
       {% endif %}
+
+      <form method="GET" action="{% url 'post_search' %}">
+        <input type="text" name="q" placeholder="Search blog..." required>
+        <button type="submit">Search</button>
+      </form>
+      
     </nav>
   </header>
   

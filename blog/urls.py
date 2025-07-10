@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('search/', views.post_search, name='post_search'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
     path('post/<slug:slug>/', views.post_detail, name='post_detail'),
     path('category/<slug:slug>/', views.category_posts, name='category_posts'),

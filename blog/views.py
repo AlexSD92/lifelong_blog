@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Post, Category, Tag
 from .forms import CommentForm, RegisterForm
-from django.db.models import F
+from django.db.models import F, Q
 
 
 def home(request):
@@ -94,3 +94,24 @@ def terms_view(request):
 
 def privacy_view(request):
     return render(request, 'blog/privacy.html')
+
+def post_search(request):
+    query = request.GET.get('q')
+    results = []
+
+    if len(query) > 100:
+        messages.warning(request, "Search term too long.")
+        return redirect('home')
+
+    if query:
+        results = Post.objects.filter(
+            Q(published=True),
+            Q(title__icontains=query) |
+            Q(body__icontains=query) |
+            Q(tags__name__icontains=query)
+        ).distinct()
+
+    return render(request, 'blog/search_results.html', {
+        'query': query,
+        'results': results
+    })
