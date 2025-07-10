@@ -19,7 +19,6 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
-GA_TRACKING_ID = env("GA_TRACKING_ID", default=None)
 
 
 load_dotenv()
@@ -34,12 +33,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-rx^x#6z4lsw^$s8paeod&-3$3m=&pqbcj!$_4kmo=0d)3*(@+y"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['whatthevolt.com', 'www.whatthevolt.com', '127.0.0.1']
+
+# GOOGLE ANALYTICS
+GA_TRACKING_ID = env("GA_TRACKING_ID", default=None)
 
 # Application definition
 
@@ -153,9 +155,25 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+# FORCE HTTPS 
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+
+# X-CONTENT-TYPE-OPTIONS & HSTS
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# SECURE BROWSER XSS FILTER
+SECURE_BROWSER_XSS_FILTER = True
+
+
