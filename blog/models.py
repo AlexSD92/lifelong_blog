@@ -43,7 +43,9 @@ class Post(models.Model):
     body = RichTextField()
     published = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField('Tag', blank=True, related_name='posts')  # ✅ Tags added here
+    tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
+    views = models.PositiveIntegerField(default=0)
+
 
     def save(self, *args, **kwargs):
         if not self.slug:

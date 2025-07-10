@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Post, Category, Tag
 from .forms import CommentForm, RegisterForm
+from django.db.models import F
 
 
 def home(request):
@@ -18,6 +19,11 @@ def home(request):
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, published=True)
+
+    Post.objects.filter(pk=post.pk).update(views=F('views') + 1)
+
+    post.refresh_from_db()
+
     comments = post.comments.filter(approved=True)
     new_comment = None
 

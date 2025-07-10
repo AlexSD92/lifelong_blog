@@ -5,12 +5,15 @@
 {% block og_description %}{{ post.excerpt|truncatewords:30 }}{% endblock %}
 {% block og_image %}{{ post.featured_image.url }}{% endblock %}
 
+from django.db.models import F
+
 {% block content %}
   <article>
     <h2>{{ post.title }}</h2>
     <p><small>By {{ post.author }} • {{ post.created|date:"F j, Y" }}</small></p>
     <p class="text-sm text-gray-500"><small>  Estimated reading time: {{ post.reading_time }} minute{{ post.reading_time|pluralize }}
     </small></p>
+    <p><strong>Views:</strong> {{ post.views }}</p>
     {% if post.image %}
       <img src="{{ post.image.url }}" alt="Image for {{ post.title }}">
     {% endif %}
