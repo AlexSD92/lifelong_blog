@@ -14,6 +14,13 @@ from pathlib import Path
 import os
 from email.utils import formataddr
 from dotenv import load_dotenv
+from django.conf import settings
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
+GA_TRACKING_ID = env("GA_TRACKING_ID", default=None)
+
 
 load_dotenv()
 
@@ -70,6 +77,9 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.debug",
+                "blog.context_processors.analytics_tracking_id",
+
             ],
         },
     },
