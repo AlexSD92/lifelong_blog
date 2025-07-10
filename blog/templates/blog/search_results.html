@@ -9,7 +9,7 @@
     {% for post in results %}
       <div>
         <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.body|truncatewords:30 }}</p>
+        <p>{{ post.body|truncatewords:30|safe }}</p>
       </div>
     {% endfor %}
   {% else %}

@@ -8,6 +8,7 @@ from django.core.paginator import Paginator
 from .models import Post, Category, Tag
 from .forms import CommentForm, RegisterForm
 from django.db.models import F, Q
+from rapidfuzz import fuzz
 
 
 def home(request):
@@ -96,20 +97,18 @@ def privacy_view(request):
     return render(request, 'blog/privacy.html')
 
 def post_search(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q', '')
+    all_posts = Post.objects.filter(published=True)
     results = []
 
-    if len(query) > 100:
-        messages.warning(request, "Search term too long.")
-        return redirect('home')
-
     if query:
-        results = Post.objects.filter(
-            Q(published=True),
-            Q(title__icontains=query) |
-            Q(body__icontains=query) |
-            Q(tags__name__icontains=query)
-        ).distinct()
+        for post in all_posts:
+            score = max(
+                fuzz.partial_ratio(query, post.title),
+                fuzz.partial_ratio(query, post.body),
+            )
+            if score > 60:  # You can adjust threshold
+                results.append(post)
 
     return render(request, 'blog/search_results.html', {
         'query': query,
