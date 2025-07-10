@@ -10,6 +10,8 @@
     <div class="post-preview">
       <h2><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
       <p><small>By {{ post.author }} • {{ post.created|date:"F j, Y" }} • in <a href="{% url 'category_posts' slug=post.category.slug %}">{{ post.category }}</a></small></p>
+      <p class="text-sm text-gray-500"><small>  Estimated reading time: {{ post.reading_time }} minute{{ post.reading_time|pluralize }}
+      </small></p>
       <p>{{ post.body|truncatewords:30|safe }}</p>
       <p><a href="{% url 'post_detail' slug=post.slug %}">Read more →</a></p>
       {% if post.tags.all %}

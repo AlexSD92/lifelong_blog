@@ -5,6 +5,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from ckeditor.fields import RichTextField
 from django.urls import reverse
+import math
+import re
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -50,6 +52,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.slug)])
+    
+    def reading_time(self):
+        # Strip HTML tags
+        plain_text = re.sub('<[^<]+?>', '', self.body)
+        word_count = len(plain_text.split())
+        return math.ceil(word_count / 200)  # Average adult reads ~200 wpm
 
     def __str__(self):
         return self.title
