@@ -12,6 +12,8 @@
     <div class="post-preview">
       <h3><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></h3>
       <p>{{ post.body|truncatewords:25 }}</p>
+      <p class="text-sm text-gray-500"><small>  Estimated reading time: {{ post.reading_time }} minute{{ post.reading_time|pluralize }}
+      </small></p>
     </div>
   {% empty %}
     <p>No posts found in this category.</p>

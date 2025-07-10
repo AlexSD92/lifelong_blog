@@ -9,6 +9,8 @@
   <article>
     <h2>{{ post.title }}</h2>
     <p><small>By {{ post.author }} • {{ post.created|date:"F j, Y" }}</small></p>
+    <p class="text-sm text-gray-500"><small>  Estimated reading time: {{ post.reading_time }} minute{{ post.reading_time|pluralize }}
+    </small></p>
     {% if post.image %}
       <img src="{{ post.image.url }}" alt="Image for {{ post.title }}">
     {% endif %}
