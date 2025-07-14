@@ -1,0 +1,65 @@
+INFO 2025-07-11 15:39:59,785 autoreload Watching for file changes with StatReloader
+INFO 2025-07-11 15:44:23,875 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\life_long_blog\settings.py changed, reloading.
+INFO 2025-07-11 15:44:24,310 autoreload Watching for file changes with StatReloader
+WARNING 2025-07-11 15:44:26,069 log Not Found: /favicon.ico
+ERROR 2025-07-11 15:44:39,814 forms Failed to send password reset email to 3
+Traceback (most recent call last):
+  File "C:\Users\alexs\Documents\Coding 2025\life_long_blog\venv\Lib\site-packages\django\contrib\auth\forms.py", line 434, in send_mail
+    email_message.send()
+  File "C:\Users\alexs\Documents\Coding 2025\life_long_blog\venv\Lib\site-packages\django\core\mail\message.py", line 307, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alexs\Documents\Coding 2025\life_long_blog\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 136, in send_messages
+    sent = self._send(message)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alexs\Documents\Coding 2025\life_long_blog\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 155, in _send
+    self.connection.sendmail(
+  File "C:\Users\alexs\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 908, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (550, b'The from address does not match a verified Sender Identity. Mail cannot be sent until this error is resolved. Visit https://sendgrid.com/docs/for-developers/sending-email/sender-identity/ to see the Sender Identity requirements')
+INFO 2025-07-12 07:38:39,627 autoreload Watching for file changes with StatReloader
+WARNING 2025-07-12 07:38:41,725 log Not Found: /favicon.ico
+ERROR 2025-07-12 07:38:55,731 forms Failed to send password reset email to 3
+Traceback (most recent call last):
+  File "C:\Users\alexs\Documents\Coding 2025\life_long_blog\venv\Lib\site-packages\django\contrib\auth\forms.py", line 434, in send_mail
+    email_message.send()
+  File "C:\Users\alexs\Documents\Coding 2025\life_long_blog\venv\Lib\site-packages\django\core\mail\message.py", line 307, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alexs\Documents\Coding 2025\life_long_blog\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 136, in send_messages
+    sent = self._send(message)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alexs\Documents\Coding 2025\life_long_blog\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 155, in _send
+    self.connection.sendmail(
+  File "C:\Users\alexs\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 908, in sendmail
+    raise SMTPDataError(code, resp)
+smtplib.SMTPDataError: (550, b'The from address does not match a verified Sender Identity. Mail cannot be sent until this error is resolved. Visit https://sendgrid.com/docs/for-developers/sending-email/sender-identity/ to see the Sender Identity requirements')
+INFO 2025-07-12 07:41:32,731 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:45:48,897 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\forms.py changed, reloading.
+INFO 2025-07-12 07:45:49,310 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:46:03,862 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\forms.py changed, reloading.
+INFO 2025-07-12 07:46:04,283 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:46:53,430 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:46:53,841 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:47:57,254 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:47:57,647 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:49:06,024 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:49:06,429 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:49:22,836 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:49:23,240 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:49:44,732 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:49:45,160 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:52:42,020 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\forms.py changed, reloading.
+INFO 2025-07-12 07:52:42,438 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:52:44,781 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\forms.py changed, reloading.
+INFO 2025-07-12 07:52:45,168 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:53:03,776 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:53:04,186 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:53:29,717 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:53:30,117 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:53:54,645 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:53:55,027 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:55:49,657 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\forms.py changed, reloading.
+INFO 2025-07-12 07:55:50,067 autoreload Watching for file changes with StatReloader
+INFO 2025-07-12 07:56:25,992 autoreload C:\Users\alexs\Documents\Coding 2025\life_long_blog\blog\urls.py changed, reloading.
+INFO 2025-07-12 07:56:26,392 autoreload Watching for file changes with StatReloader

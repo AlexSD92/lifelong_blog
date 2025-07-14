@@ -1,9 +1,12 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
 from . import views
 from django.views.generic import TemplateView
+from blog.forms import CustomPasswordResetForm
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path("accounts/password_reset/", auth_views.PasswordResetView.as_view(form_class=CustomPasswordResetForm), name="password_reset"),
     path('search/', views.post_search, name='post_search'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
     path('post/<slug:slug>/', views.post_detail, name='post_detail'),
