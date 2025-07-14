@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # === Core Settings ===
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=False)
-ALLOWED_HOSTS = ['whatthevolt.com', 'www.whatthevolt.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['wattthevolt.onrender.com', 'www.wattthevolt.onrender.com', 'whatthevolt.com', 'www.whatthevolt.com', '127.0.0.1', 'localhost']
 
 # === Google Analytics ===
 GA_TRACKING_ID = env("GA_TRACKING_ID", default=None)
